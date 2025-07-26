@@ -33,7 +33,7 @@ marker_style = st.sidebar.selectbox("🔸 Marker Style (Line/Scatter)", [
 ])
 marker_style = marker_style.split()[0]
 
-marker_color = st.sidebar.selectbox("🎨 Marker Color", [
+marker_color = st.sidebar.selectbox("🎨 Default Marker Color", [
     "blue", "red", "green", "orange", "purple", "black", "brown"
 ])
 
@@ -70,8 +70,10 @@ if uploaded_file:
                                     ha='center', va='bottom')
 
                 elif chart_type == "Line Plot":
-                    for col in selected_columns:
-                        ax.plot(df[col], marker=marker_style, color=marker_color, label=col)
+                    colors = plt.cm.tab10.colors  # 10 different colors
+                    for i, col in enumerate(selected_columns):
+                        color = colors[i % len(colors)]
+                        ax.plot(df[col], marker=marker_style, label=col, color=color)
                     ax.set_title("Line Plot")
                     ax.legend()
 
