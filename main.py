@@ -14,26 +14,26 @@ st.markdown(
 )
 
 # Title
-st.title("📊 Interactive Data Visualizer")
+st.title("Interactive Data Visualizer")
 st.markdown("Upload a CSV and visualize your data in various chart formats.")
 
 # Sidebar
 st.sidebar.title("⚙️ Controls")
 
 # File Upload
-uploaded_file = st.sidebar.file_uploader("📂 Upload your CSV file", type=["csv"])
+uploaded_file = st.sidebar.file_uploader(" Upload your CSV file", type=["csv"])
 
 # Chart Options
-chart_type = st.sidebar.selectbox("📈 Select Chart Type", [
+chart_type = st.sidebar.selectbox(" Select Chart Type", [
     "Bar Chart", "Line Plot", "Pie Chart", "Scatter Plot", "Histogram"
 ])
 
-marker_style = st.sidebar.selectbox("🔸 Marker Style (Line/Scatter)", [
+marker_style = st.sidebar.selectbox(" Marker Style (Line/Scatter)", [
     "o (Circle)", "s (Square)", "^ (Triangle)", "* (Star)", "x (Cross)", "d (Diamond)"
 ])
 marker_style = marker_style.split()[0]
 
-marker_color = st.sidebar.selectbox("🎨 Default Marker Color", [
+marker_color = st.sidebar.selectbox("Default Marker Color", [
     "blue", "red", "green", "orange", "purple", "black", "brown"
 ])
 
@@ -41,23 +41,23 @@ marker_color = st.sidebar.selectbox("🎨 Default Marker Color", [
 if uploaded_file:
     try:
         df = pd.read_csv(uploaded_file)
-        st.success("✅ File uploaded successfully!")
+        st.success(" File uploaded successfully!")
 
-        st.subheader("🧾 Data Preview")
+        st.subheader(" Data Preview")
         st.dataframe(df.head(), use_container_width=True)
 
         numeric_cols = df.select_dtypes(include='number').columns.tolist()
         all_cols = df.columns.tolist()
 
-        selected_columns = st.multiselect("🗂️ Select Columns for Visualization", all_cols)
+        selected_columns = st.multiselect(" Select Columns for Visualization", all_cols)
 
-        if st.button("📊 Generate Chart"):
+        if st.button(" Generate Chart"):
             if chart_type in ["Bar Chart", "Line Plot", "Histogram"] and not selected_columns:
-                st.warning("⚠️ Please select at least one column.")
+                st.warning("Please select at least one column.")
             elif chart_type == "Scatter Plot" and len(selected_columns) != 2:
-                st.warning("⚠️ Scatter plot needs exactly 2 numeric columns.")
+                st.warning(" Scatter plot needs exactly 2 numeric columns.")
             elif chart_type == "Pie Chart" and len(selected_columns) != 1:
-                st.warning("⚠️ Pie chart needs exactly 1 column.")
+                st.warning(" Pie chart needs exactly 1 column.")
             else:
                 fig, ax = plt.subplots(figsize=(10, 5))
 
@@ -102,6 +102,7 @@ if uploaded_file:
                 ax.grid(True, linestyle="--", alpha=0.6)
                 st.pyplot(fig)
     except Exception as e:
-        st.error(f"❌ Failed to read file: {e}")
+        st.error(f"Failed to read file: {e}")
 else:
-    st.info("👈 Please upload a CSV file to begin.")
+    st.info("Please upload a CSV file to begin.")
+
