@@ -1,5 +1,5 @@
 
-# 📊 Interactive Data Visualizer
+#  Interactive Data Visualizer
 
 A modern Python desktop application for visualizing CSV data interactively. Built with Tkinter, Pandas, and Matplotlib, it features a clean UI, chart customization, and robust error handling.
 
@@ -26,9 +26,9 @@ pip install pandas matplotlib
     ```bash
     python main.py
     ```
-2. Click "📂 Upload CSV File" to select your data file.
+2. Click " Upload CSV File" to select your data file.
 3. Choose chart type, columns, marker style, and color as needed.
-4. Click "📊 Generate Chart" to view your visualization.
+4. Click " Generate Chart" to view your visualization.
 
 ## Chart Types
 - **Bar Chart**: Sum of selected columns, values shown on bars.
@@ -46,3 +46,4 @@ pip install pandas matplotlib
 
 ## License
 MIT License
+
