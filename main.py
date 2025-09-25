@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="📊 Interactive Data Visualizer", layout="wide")
+st.set_page_config(page_title=" Interactive Data Visualizer", layout="wide")
 
 st.markdown(
     """
@@ -105,4 +105,5 @@ if uploaded_file:
         st.error(f"Failed to read file: {e}")
 else:
     st.info("Please upload a CSV file to begin.")
+
 
